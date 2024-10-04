@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <script>
+    //       let promise = new Promise((resolve, reject) => {
+
+    //     });
+    //     console.log(promise);
+
+    //     let promise = new promise((resolve,reject)=>{
+    //       resolve("task completed")
+
+    //     })
+    //     console.log(promise);
+
+    //     let promise = new Promise((resolve, reject) => {
+    //       reject("task completed");
+    //     });
+    //     console.log(promise);
+
+    //   const myPromise = new Promise((resolve,reject)=>{
+    //     const succus = true;
+    //     if(succus){
+    //       resolve("Oparation succused!");
+    //     }
+    //     else{
+    //       reject("Oparation failed");
+    //     }
+    //   });
+
+    //   myPromise
+    //   .then((res)=>{
+    //     console.log(res)
+    //   })
+    //   .catch((err)=>{
+    //     console.log(err)
+    //   });
+
+    // //   const myPromise = new Promise((resolve,reject)=>{
+    // //     const succus = true;
+    // //     if(!succus){
+    // //       resolve("Oparation succused!");
+    // //     }
+    // //     else{
+    // //       reject("Oparation failed");
+    // //     }
+    // //   });
+
+    // //   myPromise
+    // //   .then((res)=>{
+    // //     console.log(res)
+    // //   })
+    // //   .catch((err)=>{
+    // //     console.log(err)
+    // //   });
+
+    // //   const myPromise = new Promise((resolve, reject) => {
+    //     const success = true;
+    //     if (success) {
+    //       resolve("First promise succeeded!");
+    //     } else {
+    //       reject("First promise failed!");
+    //     }
+    //   });
+    //   const anotherPromise = new Promise((resolve, reject) => {
+    //     const success = false;
+    //     if (success) {
+    //       resolve("Second promise succeeded!");
+    //     } else {
+    //       reject("Second promise failed!");
+    //     }
+    //   });
+    //   // Chaining promises
+    //   myPromise
+    //     .then((res) => {
+    //       console.log(res);
+    //       return anotherPromise;
+    //     })
+    //     .then((nextRes) => {
+    //       console.log(nextRes);
+    //     })
+    //     .catch((err) => {
+    //       console.error(err);
+    //     });
+
+
+
+
+
+
+        // Simulating an async operation with a Promise
+function asyncTask1() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("Task 1 complete");
+      resolve(10); // Pass result to the next .then()
+    }, 1000);
+  });
+}
+
+function asyncTask2(resultFromTask1) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("Task 2 complete");
+      resolve(resultFromTask1 + 20); // Pass modified result to the next .then()
+    }, 1000);
+  });
+}
+
+function asyncTask3(resultFromTask2) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("Task 3 complete");
+      resolve(resultFromTask2 + 30);
+    }, 1000);
+  });
+}
+
+// Chaining the promises
+asyncTask1()
+  .then(result1 => {
+    return asyncTask2(result1);
+  })
+  .then(result2 => {
+    return asyncTask3(result2);
+  })
+  .then(finalResult => {
+    console.log("Final Result:", finalResult);
+  })
+  .catch(error => {
+    console.log("An error occurred:", error);
+  });
+
+
+    </script>
+    
+</body>
+</html>
